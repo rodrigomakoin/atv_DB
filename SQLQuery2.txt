@@ -1,0 +1,38 @@
+create table cliente
+( codigo_cli int not null primary key,
+nome_cli varchar(100) not null,
+estado_cli varchar(002) not null,
+preco_cli numeric(10,2) not null,
+data_cli smalldatetime not null,
+)
+
+--Inserindo os registros na tabela cliente
+insert into cliente values(21,'MEGA','SP',542,'20190811')
+insert into cliente values(22,'M.A Informática','RJ',555,'20190817')
+insert into cliente values(23,'DREANS SOFT','RJ',540,'20190818')
+insert into cliente values(24,'DI2S','SP',430,'20190712')
+insert into cliente values(25,'MASTER','RJ',852,'20190611')
+insert into cliente values(26,'INFOTRED','BA',200,'20190515')
+insert into cliente values(27,'RECICLE SOFT','RJ',430,'20190414')
+insert into cliente values(28,'NETCANON','PR',224,'20190314')
+insert into cliente values(29,'LUZION DIGITAL','SP',330,'20190222')
+insert into cliente values(20,'CNH FINANCE','DF',522,'20190123')
+
+select * from cliente
+
+alter table cliente
+add 
+email varchar(20),
+qtdade int,
+vlr_total int,
+data_lib date
+
+drop column email
+
+select * from cliente
+
+update cliente set email=(CONCAT(substring(nome_cli,0,4),('@makoin.com.br')));
+
+update cliente set qtdade=(len(nome_cli)*(day(data_cli)));
+
+update cliente set vlr_total=(qtdade * preco_cli) where estado_cli in('SP','RJ');
